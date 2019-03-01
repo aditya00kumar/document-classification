@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+    box-sizing: border-box;
+}
+
+input[type=text], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: rgb(255,1,1);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=submit]:hover {
+    background-color: rgb(255,5,5);
+}
+
+.container {
+    border-radius: 5px;
+    <!--background-color: #f2f2f2;-->
+    padding: 20px;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+ button {
+     display: inline-block;
+     position: relative;
+     line-height: 32px;
+     border-radius: 2px;
+     background-color: #fff;
+}
+ button.raised {
+     transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+     transition-delay: 0.2s;
+     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+ button.raised:active {
+     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+     transition-delay: 0s;
+}
+ md-button {
+     margin: 6px 8px 6px 8px;
+     padding: 6px 6px 6px 6px;
+     font-size: 14px;
+     text-align: center;
+     text-transform: uppercase;
+     text-decoration: none;
+     border: none;
+     outline: none;
+     background-color: #fff;
+     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.26);
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+</style>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<!--<link rel="shortcut icon" type="image/png" href="https://financialit.net/sites/default/files/dbs-bank.png" />-->
+<title>BBC News Data</title>
+
+</head>
+<body>
+
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!--<a class="navbar-brand" href="#">-->
+							<!--&lt;!&ndash;<img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/18/DBS_Bank_Logo.svg/320px-DBS_Bank_Logo.svg.png" width="80" height="33" class="d-inline-block align-top" alt="DBS Logo">&ndash;&gt;-->
+							<!--</a>-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('display_index') }}">Home
+											<span class="sr-only">(current)</span>
+										</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" class="nav-link"
+                       href="https://github.com/aditya00kumar/document-classification">Document Classification -
+                        Github</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+<div class="container">
+  <form action="/submit" method="post">
+    <div class="row">
+      <div class="col-25">
+        <label for="text_input">Text Input</label>
+      </div>
+      <div class="col-75">
+        <textarea id="text_input" name="text_input"
+                  placeholder="Paste news related to sports, business, entertainment, politics and tech to check the accuracy of naive bayes classifier :)"
+                  style="height:200px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+						  Submit
+						</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
