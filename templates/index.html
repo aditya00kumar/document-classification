@@ -1,0 +1,131 @@
+<head>
+    <!-- <script src = "angular.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.3.0/material.blue_grey-red.min.css" />
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="import" href="https://www.polymer-project.org/0.5/components/paper-ripple/paper-ripple.html">
+    <link rel="import" href="http://www.polymer-project.org/components/core-icons/core-icons.html">
+    <link rel="import" href="http://www.polymer-project.org/components/font-roboto/roboto.html">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="https://fonts.googleaspis.com/icon?family=Material+Icons">-->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+
+    <title>NLP</title>
+    <!--<link rel="shortcut icon" type="image/png" href="https://financialit.net/sites/default/files/dbs-bank.png" />-->
+
+</head>
+
+<body>
+    <!-- Image and text -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+							<!--<img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/18/DBS_Bank_Logo.svg/320px-DBS_Bank_Logo.svg.png" width="80" height="33" class="d-inline-block align-top" alt="DBS Logo">-->
+							</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('display_index') }}">Home
+											<span class="sr-only">(current)</span>
+										</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" class="nav-link"
+                       href="https://github.com/aditya00kumar/document-classification">Document Classification -
+                        Github</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        <!--<a href="javascript:history.go(0)">-->
+            <h1 align="center">NLP Pipeline</h1>
+        </a>
+    </div>
+    <div class="container">
+        <div class="row center">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <h2 align="center">Train</h2>
+                        <form action="/upload" method="POST" enctype=multipart/form-data>
+                            <input type="file"  name=csv accept=".tsv, .csv" required/>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+						  Submit
+						</button>
+                        </form>
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <h2 align="center">Test</h2>
+                        <form action="/upload" method="POST" enctype=multipart/form-data>
+                            <input type="file" name=csv accept=".tsv, .csv" required value="Submit"/>
+                            <!--<input type="submit" required>-->
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+						  Submit
+						</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <div><p>
+                    <br />
+			</p></div>
+            <div class="container">
+                <!--<a href="javascript:history.go(0)">-->
+                    <h2 align="center">Available Datasets</h2>
+                </a>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row center">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric  mdl-button--accent">
+                        <form action="/check">
+                            <select name= files method="GET" action="/">
+                                {% for file in files %}
+                                <option value= "{{file}}" SELECTED>{{ file }}</option>"
+                                {% endfor %}
+                            </select>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                              Submit
+                            </button>
+                        </form>
+
+                    </td>
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <!--<p>BBC News data set</p>-->
+                        <form action="/bbc_data" method="post">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+						  Select BBC News Data
+						</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+        </div>
+    </div>
+    <br>
+    <br>
+    <!--<footer>-->
+        <!--<p>Developed by: Aditya Kumar-->
+            <!--&lt;!&ndash;<a href="http://kirankunapuli.github.io/">Kiran Kunapuli V S </a>&ndash;&gt;-->
+        <!--</p>-->
+        <!--<p>Version V0.1 Beta</p>-->
+    <!--</footer>-->
+
+<!--<script>-->
+    <!--function checkLogin() {-->
+    <!--debugger;-->
+    <!--&lt;!&ndash;var userDetails = JSON.parse(sessionStorage.user_details);&ndash;&gt;-->
+        <!--if(!sessionStorage.user_details) {-->
+                <!--window.location.href = 'login.html';-->
+         <!--}-->
+    <!--}-->
+    <!--checkLogin();-->
+<!--</script>-->
+</body>
