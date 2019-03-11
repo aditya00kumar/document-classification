@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+    <title>Results</title>
+    <link rel="shortcut icon" type="image/png" href="https://financialit.net/sites/default/files/dbs-bank.png" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+							<img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/18/DBS_Bank_Logo.svg/320px-DBS_Bank_Logo.svg.png" width="80" height="33" class="d-inline-block align-top" alt="DBS Logo">
+							</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('display_index') }}">Home
+											<span class="sr-only">(current)</span>
+										</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" class="nav-link" href="https://gitlab.dev.apps.cs.sgp.dbs.com/kirankunapuli/sentiment-analysis-framework">Sentiment Analysis - Gitlab</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" class="nav-link" href="https://gitlab.dev.apps.cs.sgp.dbs.com/aditya1/Document_Classification">Document Classification - Gitlab</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1 align="center">Results</h1>
+    <div class="container">
+        <div class="row center">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                <tr>
+                        <td>
+                            <h2 align="center">Classifier</h2>
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <h2 align="center">Result</h2>
+                        </td>
+                   </tr>
+                {% for key, value in result.items() %}
+                   <tr>
+                        <th>
+                            <p align="center">{{ key }}</p>
+                        </th>
+                        <th class="mdl-data-table__cell--non-numeric">
+                            <p align="center">{{ value }}</p>
+                        </th>
+                   </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>
