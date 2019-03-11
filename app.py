@@ -15,10 +15,6 @@ from flask_session import Session
 from preprocess import PreProcess
 import configparser
 from pathlib import Path
-app.config.from_object('config.Config')
-    # app.run(host='10.216.7.223', debug=True)
-app.config['UPLOAD_FOLDER'] = '/Users/aditya1/Documents/Document_Classification/Uploads'
-app.run(host='0.0.0.0', debug=True)
 
 app = Flask(__name__)
 SESSION_TYPE = 'filesystem'
@@ -30,6 +26,10 @@ conf.read(os.path.join(str(source_path), 'tox.ini'))
 print(conf.keys())
 config = dict()
 config['classifiers'] = conf['classifiers']['classifiers']
+app.config.from_object('config.Config')
+    # app.run(host='10.216.7.223', debug=True)
+app.config['UPLOAD_FOLDER'] = '/Users/aditya1/Documents/Document_Classification/Uploads'
+app.run(host='0.0.0.0', debug=True)
 
 # @app.route('/')
 @app.route('/index', methods=['POST','GET'])
