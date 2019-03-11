@@ -3,3 +3,4 @@ flask
 sklearn
 Flask-Session
 nltk
+gunicorn
