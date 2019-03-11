@@ -29,7 +29,7 @@ config['classifiers'] = conf['classifiers']['classifiers']
 app.config.from_object('config.Config')
     # app.run(host='10.216.7.223', debug=True)
 app.config['UPLOAD_FOLDER'] = '/Users/aditya1/Documents/Document_Classification/Uploads'
-app.run(host='0.0.0.0', debug=True)
+# app.run(host='0.0.0.0', debug=True)
 
 # @app.route('/')
 @app.route('/index', methods=['POST','GET'])
@@ -133,9 +133,9 @@ def submit():
         return render_template('results.html', result=result)
 
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 #     app.config.from_object('config.Config')
 #     # app.run(host='10.216.7.223', debug=True)
 #     app.config['UPLOAD_FOLDER'] = '/Users/aditya1/Documents/Document_Classification/Uploads'
-#     app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True)
 #     # app.run(host='localhost', debug=True)
