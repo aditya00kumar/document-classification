@@ -18,9 +18,14 @@ from pathlib import Path
 
 
 app = Flask(__name__)
+app.config.from_object('config.Config')
+source_path = Path(Path(os.getcwd()))
+app.config['UPLOAD_FOLDER'] = os.path.join(str(source_path), 'Uploads')
 SESSION_TYPE = 'filesystem'
 app.config.from_object(__name__)
 Session(app)
+
+
 conf = configparser.ConfigParser()
 source_path = Path(Path(os.getcwd()))
 conf.read(os.path.join(str(source_path), 'tox.ini'))
@@ -133,9 +138,5 @@ def submit():
 
 
 if __name__ == '__main__':
-    app.config.from_object('config.Config')
-    # app.run(host='10.216.7.223', debug=True)
-    source_path = Path(Path(os.getcwd()))
-    app.config['UPLOAD_FOLDER'] = os.path.join(str(source_path), 'Uploads')
     app.run(host='0.0.0.0', debug=True)
     # app.run(host='localhost', debug=True)
