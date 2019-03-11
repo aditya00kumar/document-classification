@@ -12,6 +12,7 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
 
     <title>NLP</title>
+    <!--<link rel="shortcut icon" type="image/png" href="https://financialit.net/sites/default/files/dbs-bank.png" />-->
 
 </head>
 
@@ -19,8 +20,8 @@
     <!-- Image and text -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
-		<!--<img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/18/DBS_Bank_Logo.svg/320px-DBS_Bank_Logo.svg.png" width="80" height="33" class="d-inline-block align-top" alt="DBS Logo">-->
-	</a>
+							<!--<img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/18/DBS_Bank_Logo.svg/320px-DBS_Bank_Logo.svg.png" width="80" height="33" class="d-inline-block align-top" alt="DBS Logo">-->
+							</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -46,7 +47,7 @@
             <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                 <tr>
                     <td class="mdl-data-table__cell--non-numeric">
-                        <h2 align="center">Train</h2>
+                        <h2 align="center">Training Dataset</h2>
                         <form action="/upload" method="POST" enctype=multipart/form-data>
                             <input type="file"  name=csv accept=".tsv, .csv" required/>
                             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
@@ -55,7 +56,7 @@
                         </form>
                     </td>
                     <td class="mdl-data-table__cell--non-numeric">
-                        <h2 align="center">Test</h2>
+                        <h2 align="center">Test Dataset</h2>
                         <form action="/upload" method="POST" enctype=multipart/form-data>
                             <input type="file" name=csv accept=".tsv, .csv" required value="Submit"/>
                             <!--<input type="submit" required>-->
@@ -69,9 +70,8 @@
             <div><p>
                     <br />
 			</p></div>
-            <div class="container">
-                <!--<a href="javascript:history.go(0)">-->
-                    <h2 align="center">Available Datasets</h2>
+        <div class="container">
+                    <h2 align="center">Select Classifier to train</h2>
                 </a>
                 <br>
             </div>
@@ -82,8 +82,49 @@
             <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                 <tr>
                     <td class="mdl-data-table__cell--non-numeric  mdl-button--accent">
-                        <form action="/check">
-                            <select name= files method="GET" action="/">
+                        <!--<form action="/check" method="POST">-->
+                            <!--<select name="file_name">-->
+                                <!--{% for file in files %}-->
+                                <!--<option value= "{{file}}" SELECTED>{{ file }}</option>"-->
+                                <!--{% endfor %}-->
+                            <!--</select>-->
+                            <!--<button class="mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-js-ripple-effect mdl-button&#45;&#45;accent">-->
+                              <!--Submit-->
+                            <!--</button>-->
+                        <!--</form>-->
+                        <div class="form-check">
+
+                            {% for classifier in classifiers %}
+                                <input type="checkbox" name="materialUnchecked" value="{{classifier}}">
+                            {{classifier}}<br>
+                                <!--<input type="checkbox" class="form-check-input" id="materialUnchecked">-->
+                                <!--<label class="form-check-label" for="materialUnchecked">{{classifier}}</label>-->
+                            {% endfor %}
+                            </input>
+                    </div>
+
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <div class="container">
+                    <h2 align="center">Available Datasets</h2>
+                </a>
+                <br>
+    </div>
+    </div>
+    </div>
+    <div class="container">
+        <div class="row center">
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric  mdl-button--accent">
+                        <form action="/check" method="POST">
+                            <select name="file_name">
                                 {% for file in files %}
                                 <option value= "{{file}}" SELECTED>{{ file }}</option>"
                                 {% endfor %}
@@ -116,4 +157,5 @@
         <!--</p>-->
         <!--<p>Version V0.1 Beta</p>-->
     <!--</footer>-->
+
 </body>
