@@ -24,18 +24,20 @@ Session(app)
 conf = configparser.ConfigParser()
 source_path = Path(Path(os.getcwd()))
 conf.read(os.path.join(str(source_path), 'tox.ini'))
+print(app.config)
 print(conf.keys())
 config = dict()
 config['classifiers'] = conf['classifiers']['classifiers']
 
+
 # @app.route('/')
-@app.route('/index', methods=['POST','GET'])
+@app.route('/index', methods=['POST', 'GET'])
 def display_index():
-#     user_id = request.cookies
-#     session_id = request.cookies['session']
-#     files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
-#     print('user:', user_id)
-#     return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
+    user_id = request.cookies
+    session_id = request.cookies['session']
+    files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
+    print('user:', user_id)
+    return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
     return render_template('index.html', classifiers=eval(config['classifiers']))
 
 
@@ -133,6 +135,7 @@ def submit():
 if __name__ == '__main__':
     app.config.from_object('config.Config')
     # app.run(host='10.216.7.223', debug=True)
-    app.config['UPLOAD_FOLDER'] = '/Users/aditya1/Documents/Document_Classification/Uploads'
+    source_path = Path(Path(os.getcwd()))
+    app.config['UPLOAD_FOLDER'] = os.path.join(str(source_path), 'Uploads')
     app.run(host='0.0.0.0', debug=True)
     # app.run(host='localhost', debug=True)
