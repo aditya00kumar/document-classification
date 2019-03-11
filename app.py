@@ -133,9 +133,9 @@ def submit():
         return render_template('results.html', result=result)
 
 
-if __name__ == '__main__':
-    app.config.from_object('config.Config')
-    # app.run(host='10.216.7.223', debug=True)
-    app.config['UPLOAD_FOLDER'] = '/Users/aditya1/Documents/Document_Classification/Uploads'
-    app.run(host='0.0.0.0', debug=True)
-    # app.run(host='localhost', debug=True)
+# if __name__ == '__main__':
+#     app.config.from_object('config.Config')
+#     # app.run(host='10.216.7.223', debug=True)
+#     app.config['UPLOAD_FOLDER'] = '/Users/aditya1/Documents/Document_Classification/Uploads'
+#     app.run(host='0.0.0.0', debug=True)
+#     # app.run(host='localhost', debug=True)
