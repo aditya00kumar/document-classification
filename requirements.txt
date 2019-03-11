@@ -62,11 +62,7 @@ docutils==0.14
 docx2txt==0.6
 EbookLib==0.15
 emoji==0.5.1
-en-core-web-sm==2.0.0
 entrypoints==0.2.3
-fasttext==0.8.22
-fbprophet==0.2
-findspark==1.2.0
 flake8==3.5.0
 Flask==1.0.2
 Flask-Compress==1.4.0
