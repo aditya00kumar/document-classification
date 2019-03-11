@@ -31,11 +31,12 @@ config['classifiers'] = conf['classifiers']['classifiers']
 # @app.route('/')
 @app.route('/index', methods=['POST','GET'])
 def display_index():
-    user_id = request.cookies
-    session_id = request.cookies['session']
-    files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
-    print('user:', user_id)
-    return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
+#     user_id = request.cookies
+#     session_id = request.cookies['session']
+#     files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
+#     print('user:', user_id)
+#     return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
+    return render_template('index.html')
 
 
 # @app.route('/submit', methods=['POST'])
