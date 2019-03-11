@@ -36,7 +36,7 @@ def display_index():
 #     files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
 #     print('user:', user_id)
 #     return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
-    return render_template('index.html')
+    return render_template('index.html', classifiers=eval(config['classifiers']))
 
 
 # @app.route('/submit', methods=['POST'])
