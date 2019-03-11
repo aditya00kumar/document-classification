@@ -7,9 +7,8 @@ Last Modified: 1/8/18 3:10 PM
 """
 
 import os
-import ast
 import pandas as pd
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from sklearn.externals import joblib
 from flask_session import Session
 from preprocess import PreProcess
@@ -43,18 +42,12 @@ def display_index():
     files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
     print('user:', user_id)
     return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
-    return render_template('index.html', classifiers=eval(config['classifiers']))
 
 
-# @app.route('/submit', methods=['POST'])
-# def submit():
-#     return render_template('index1.html', message={'tasks'})
-
-
-@app.route('/display', methods=['POST'])
-def display_graph():
-    return render_template('graph.html')
-    # return render_template('user_input.html')
+@app.route('/train', methods=['POST'])
+def train():
+    print(request.form.getlist('classifier_checked'))
+    return jsonify(request.form)
 
 
 @app.route('/bbc_data', methods=['POST'])
@@ -68,7 +61,6 @@ def upload_file():
     files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
     if request.method == 'POST':
         file = request.files['csv']
-
         print(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], session_id, file.filename))
         return render_template('index.html', files=files)
@@ -90,14 +82,6 @@ def dropdown():
 
 @app.route('/display_classifier', methods=['GET','POST'])
 def display_classifier():
-    conf = configparser.ConfigParser()
-    source_path = Path(Path(os.getcwd()))
-    conf.read(os.path.join(str(source_path), 'tox.ini'))
-    print(conf.keys())
-    config = dict()
-    config['classifiers'] = conf['classifiers']['classifiers']
-    # return str(config['classifiers'])
-    print()
     return render_template('index.html', classifiers=eval(config['classifiers']))
 
 

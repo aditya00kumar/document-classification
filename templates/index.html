@@ -55,16 +55,6 @@
 						</button>
                         </form>
                     </td>
-                    <td class="mdl-data-table__cell--non-numeric">
-                        <h2 align="center">Test Dataset</h2>
-                        <form action="/upload" method="POST" enctype=multipart/form-data>
-                            <input type="file" name=csv accept=".tsv, .csv" required value="Submit"/>
-                            <!--<input type="submit" required>-->
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-						  Submit
-						</button>
-                        </form>
-                    </td>
                 </tr>
             </table>
             <div><p>
@@ -77,8 +67,10 @@
             </div>
         </div>
     </div>
+    <form action="/train" method="POST" enctype=multipart/form-data>
     <div class="container">
         <div class="row center">
+
             <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                 <tr>
                     <td class="mdl-data-table__cell--non-numeric  mdl-button--accent">
@@ -95,22 +87,29 @@
                         <div class="form-check">
 
                             {% for classifier in classifiers %}
-                                <input type="checkbox" name="materialUnchecked" value="{{classifier}}">
+                                <input type="checkbox" name="classifier_checked" value="{{classifier}}">
                             {{classifier}}<br>
                                 <!--<input type="checkbox" class="form-check-input" id="materialUnchecked">-->
                                 <!--<label class="form-check-label" for="materialUnchecked">{{classifier}}</label>-->
                             {% endfor %}
                             </input>
                     </div>
+                    </td>
+                    <br>
+                    <td class="mdl-data-table__cell--non-numeric mdl-data-table__cell--non-numeric">
+<!--                        <h2 align="center">Train Model</h2>-->
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+						  Train Model
+						</button>
 
                     </td>
                 </tr>
             </table>
-            <br>
-            <br>
-        </div>
-    </div>
 
+        </div>
+
+    </div>
+</form>
     <div class="container">
                     <h2 align="center">Available Datasets</h2>
                 </a>
