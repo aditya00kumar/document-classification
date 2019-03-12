@@ -14,6 +14,9 @@ from flask_session import Session
 from preprocess import PreProcess
 import configparser
 from pathlib import Path
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn import svm
 
 
 app = Flask(__name__)
@@ -44,9 +47,42 @@ def display_index():
     return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
 
 
+def read_process_data(path):
+    data = pd.read_csv(path)
+    column_name = data.columns[0]
+    # print(column_name)
+    pre_processor = PreProcess(data, column_name)
+    # todo: change code to provide all functions in class definition.
+    data = pre_processor.clean_html()
+    data = pre_processor.remove_non_ascii()
+    data = pre_processor.remove_spaces()
+    data = pre_processor.remove_punctuation()
+    data = pre_processor.stemming()
+    data = pre_processor.lemmatization()
+    data = pre_processor.stop_words()
+    train_x, test_x, train_y, test_y = train_test_split(data.Document, data.Category, test_size=0.20)
+    tfidf_transformer = TfidfVectorizer(min_df=1)
+    train_vectors = tfidf_transformer.fit_transform(train_x)
+    return train_vectors, train_y
+
+
 @app.route('/train', methods=['POST'])
 def train():
-    print(request.form.getlist('classifier_checked'))
+    clfs = request.form.getlist('classifier_checked')
+    session_id = request.cookies['session']
+    files_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id)
+    csv_file = os.listdir(files_path)[0]
+    print(files_path+'/'+csv_file)
+    train_vectors, train_y = read_process_data(files_path+'/'+csv_file)
+    path_to_Source = Path(os.getcwd())
+    model_path = os.path.join(str(Path(path_to_Source)), 'Uploads')
+
+    for clf in clfs:
+        if clf == 'Linear SVM':
+            model1 = svm.SVC(kernel='linear')
+            model1.fit(train_vectors, train_y)
+            joblib.dump(model1, Path(Path(model_path), session_id, 'SVM.pkl'))
+            print('done saving pkl')
     return jsonify(request.form)
 
 
