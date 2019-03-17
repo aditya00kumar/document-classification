@@ -17,11 +17,20 @@ This project is an attempt to provide a generic pipeline for document classifica
 	- Stemming and lemmatization
 	- TF-IDF
 	- Word2Vec
-3. Model Building
+3. Model Building using default params
 	- Naive-Bayes
 	- SVM
-	- NN
 	- Random forest
+	- Nearest Neighbors
+    - Linear SVM
+    - RBF SVM
+    - Gaussian Process
+    - Decision Tree
+    - Random Forest
+    - Neural Net
+    - AdaBoost
+    - Naive Bayes
+    - QDA
 4. Results of each model.
 5. Deployment of each model as an API.
 
