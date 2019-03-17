@@ -16,7 +16,7 @@ import configparser
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn import svm
+from ml_models import train_model
 
 
 app = Flask(__name__)
@@ -74,15 +74,18 @@ def train():
     csv_file = os.listdir(files_path)[0]
     print(files_path+'/'+csv_file)
     train_vectors, train_y = read_process_data(files_path+'/'+csv_file)
-    path_to_Source = Path(os.getcwd())
-    model_path = os.path.join(str(Path(path_to_Source)), 'Uploads')
+    path_to_source = Path(os.getcwd())
+    model_path = os.path.join(str(Path(path_to_source)), 'Uploads')
+
+    # todo: Add multiprocessing for multiple models
 
     for clf in clfs:
-        if clf == 'Linear SVM':
-            model1 = svm.SVC(kernel='linear')
-            model1.fit(train_vectors, train_y)
-            joblib.dump(model1, Path(Path(model_path), session_id, 'SVM.pkl'))
+        model = train_model(train_vectors, train_y, clf)
+        if model:
+            joblib.dump(model, Path(Path(model_path), session_id, clf.replace(" ", "_")+'.pkl'))
             print('done saving pkl')
+        else:
+            print('None object returned')
     return jsonify(request.form)
 
 
@@ -128,33 +131,33 @@ def check():
     return session_id
 
 
-@app.route('/submit', methods=['POST'])
-def submit():
-    if request.form['text_input'] == "":
-        return "Bingo I have handled this case, please provide input :)"
-    elif len(request.form['text_input']) < 20:
-        return "Please provide input large enough, Classifier can understand :)"
-    else:
-        filename = '/Users/aditya1/Documents/Document_Classification/bbc-dataset/MultinomialNB.pkl'
-        vectorizer = '/Users/aditya1/Documents/Document_Classification/bbc-dataset/vectorizer.pkl'
-        model = joblib.load(filename)
-        model2 = joblib.load('/Users/aditya1/Documents/Document_Classification/bbc-dataset/SVM.pkl')
-        data_check = pd.DataFrame([request.form['text_input']], columns=['Document'])
-        tfidf_transformer = joblib.load(vectorizer)
-        pre_processor = PreProcess(data_check, column_name='Document')
-        data_check = pre_processor.clean_html()
-        data_check = pre_processor.remove_non_ascii()
-        data_check = pre_processor.remove_spaces()
-        data_check = pre_processor.remove_punctuation()
-        data_check = pre_processor.stemming()
-        data_check = pre_processor.lemmatization()
-        data_check = pre_processor.stop_words()
-        data_check_1 = tfidf_transformer.transform(data_check.Document)
-
-        result = {model: model.predict(data_check_1)[0], model2: model2.predict(data_check_1)[0]}
-        # return 'Class Prediction is: {}'.format(model.predict(data_check_1))
-        # return result
-        return render_template('results.html', result=result)
+# @app.route('/submit', methods=['POST'])
+# def submit():
+#     if request.form['text_input'] == "":
+#         return "Bingo I have handled this case, please provide input :)"
+#     elif len(request.form['text_input']) < 20:
+#         return "Please provide input large enough, Classifier can understand :)"
+#     else:
+#         filename = '/Users/aditya1/Documents/Document_Classification/bbc-dataset/MultinomialNB.pkl'
+#         vectorizer = '/Users/aditya1/Documents/Document_Classification/bbc-dataset/vectorizer.pkl'
+#         model = joblib.load(filename)
+#         model2 = joblib.load('/Users/aditya1/Documents/Document_Classification/bbc-dataset/SVM.pkl')
+#         data_check = pd.DataFrame([request.form['text_input']], columns=['Document'])
+#         tfidf_transformer = joblib.load(vectorizer)
+#         pre_processor = PreProcess(data_check, column_name='Document')
+#         data_check = pre_processor.clean_html()
+#         data_check = pre_processor.remove_non_ascii()
+#         data_check = pre_processor.remove_spaces()
+#         data_check = pre_processor.remove_punctuation()
+#         data_check = pre_processor.stemming()
+#         data_check = pre_processor.lemmatization()
+#         data_check = pre_processor.stop_words()
+#         data_check_1 = tfidf_transformer.transform(data_check.Document)
+#
+#         result = {model: model.predict(data_check_1)[0], model2: model2.predict(data_check_1)[0]}
+#         # return 'Class Prediction is: {}'.format(model.predict(data_check_1))
+#         # return result
+#         return render_template('results.html', result=result)
 
 
 if __name__ == '__main__':
