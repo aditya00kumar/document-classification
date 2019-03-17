@@ -1,4 +1,8 @@
 # document-classification
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![HitCount](http://hits.dwyl.io/aditya00kumar/document-classification.svg)](http://hits.dwyl.io/aditya00kumar/document-classification)
+
 This project is an attempt to provide a generic pipeline for document classification using different machine learning
  models. Features of this project are following:
  - Online training of models using custom training data provided by user.
@@ -9,7 +13,7 @@ This project is an attempt to provide a generic pipeline for document classifica
 ## Steps Involved
 - Create flask module for including all the modules of project
 
-1. User input in csv file
+1. User input in csv file having two columns namely document and category
     - [BBC Dataset](http://mlg.ucd.ie/datasets/bbc.html)
         - There are five different categories of documents namely business, entertainment, politics, sport and tech.
 2. Feature Engineering
@@ -40,3 +44,4 @@ This project is an attempt to provide a generic pipeline for document classifica
 
 ### Contact:
 For any suggestion/clarification please contact at aditya00kumar@gmail.com
+
