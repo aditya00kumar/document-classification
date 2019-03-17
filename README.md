@@ -1,5 +1,10 @@
 # document-classification
-This project is an attempt to provide a generic pipeline for document classification using different machine learning models.
+This project is an attempt to provide a generic pipeline for document classification using different machine learning
+ models. Features of this project are following:
+ - Online training of models using custom training data provided by user.
+ - Define the split ratio for training and validation of result. By default 80-20 split has been provided.
+ - Visualize the results and get pickle file for trained model.
+ - Use pickle file of model to do prediction.
 
 ## Steps Involved
 - Create flask module for including all the modules of project
@@ -17,14 +22,12 @@ This project is an attempt to provide a generic pipeline for document classifica
 	- SVM
 	- NN
 	- Random forest
-4. Model Stacking
-5. Model Evaluation
+4. Results of each model.
+5. Deployment of each model as an API.
 
 ##  Task List
-  - [X] Setup flask
-  - [X] Dataset
-  - [X] Pre-Processing Class having all pre-process function
-  - [ ] Sklearn Pipeline
+  - Save the pickle files.
+  - Make an api for pickle files to be consumed.
 
 ### Contact:
 For any suggestion/clarification please contact at aditya00kumar@gmail.com
