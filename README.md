@@ -38,6 +38,19 @@ This project is an attempt to provide a generic pipeline for document classifica
 4. Results of each model.
 5. Deployment of each model as an API.
 
+## Running on AWS
+1. Install all the packages using `pip3 install -r requirements.txt`
+2. `sudo python3 -m nltk.downloader -d /usr/share/nltk_data`
+3. Then download all-corpora and stopwords
+4. Run the flask app using `sudo python3 -m flask run --host=0.0.0.0 --port=80`.
+5. App can be opened on public ip provided in aws console.
+6. `pip install gunicorn`
+7. `sudo apt-get install nginx`
+8. To start nginx server `sudo /etc/init.d/nginx start`
+9. `sudo apt-get install gunicorn3`
+10. `gunicorn app:app -b localhost:8000 &`
+
+
 ##  Task List
   - Save the pickle files.
   - Make an api for pickle files to be consumed.
