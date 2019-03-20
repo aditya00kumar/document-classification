@@ -54,7 +54,7 @@ def read_process_data(path):
     # print(column_name)
     pre_processor = PreProcess(data, column_name)
     # todo: change code to provide all functions in class definition.
-    data = pre_processor.clean_html()
+    # data = pre_processor.clean_html()
     data = pre_processor.remove_non_ascii()
     data = pre_processor.remove_spaces()
     data = pre_processor.remove_punctuation()
