@@ -13,7 +13,7 @@ import string
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.stem.snowball import SnowballStemmer
-
+nltk.data.path.append('./nltk_data/')
 
 class PreProcess:
     """
