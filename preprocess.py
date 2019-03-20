@@ -15,6 +15,7 @@ from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.stem.snowball import SnowballStemmer
 nltk.data.path.append('./nltk_data/')
 
+
 class PreProcess:
     """
     This class contains all text pre-processing function

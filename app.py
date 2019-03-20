@@ -17,7 +17,8 @@ from pathlib import Path
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from ml_models import train_model
-
+import nltk
+nltk.data.path.append('./nltk_data/')
 
 app = Flask(__name__)
 app.config.from_object('config.Config')
