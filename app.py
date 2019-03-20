@@ -71,6 +71,7 @@ def train():
     clfs = request.form.getlist('classifier_checked')
     session_id = request.cookies['session']
     files_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id)
+    # todo: check for csv files only
     csv_file = os.listdir(files_path)[0]
     print(files_path+'/'+csv_file)
     train_vectors, train_y = read_process_data(files_path+'/'+csv_file)
