@@ -1,6 +1,6 @@
 # document-classification
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HitCount](http://hits.dwyl.io/aditya00kumar/document-classification.svg)](http://hits.dwyl.io/aditya00kumar/document-classification)
 
 This project is an attempt to provide a generic pipeline for document classification using different machine learning
@@ -58,3 +58,8 @@ This project is an attempt to provide a generic pipeline for document classifica
 ### Contact:
 For any suggestion/clarification please contact at aditya00kumar@gmail.com
 
+### References:
+ - https://pyliaorachel.github.io/blog/tech/system/2017/07/07/flask-app-with-gunicorn-on-nginx-server-upon-aws-ec2-linux.html
+ - http://nginx.org/en/docs/beginners_guide.html#conf_structure
+ - https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-14-04
+ 
