@@ -27,14 +27,9 @@ This project is an attempt to provide a generic pipeline for document classifica
 	- Random forest
 	- Nearest Neighbors
     - Linear SVM
-    - RBF SVM
-    - Gaussian Process
     - Decision Tree
     - Random Forest
     - Neural Net
-    - AdaBoost
-    - Naive Bayes
-    - QDA
 4. Results of each model.
 5. Deployment of each model as an API.
 
@@ -44,6 +39,8 @@ This project is an attempt to provide a generic pipeline for document classifica
 3. Then download all-corpora and stopwords
 4. Run the flask app using `sudo python3 -m flask run --host=0.0.0.0 --port=80`.
 5. App can be opened on public ip provided in aws console.
+
+## Using gunicorn and nginx
 6. `pip install gunicorn`
 7. `sudo apt-get install nginx`
 8. To start nginx server `sudo /etc/init.d/nginx start`
@@ -52,7 +49,7 @@ This project is an attempt to provide a generic pipeline for document classifica
 
 
 ##  Task List
-  - Save the pickle files.
+  - [X] Save the pickle files.
   - Make an api for pickle files to be consumed.
 
 ### Contact:
