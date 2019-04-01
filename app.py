@@ -28,7 +28,7 @@ SESSION_TYPE = 'filesystem'
 app.config.from_object(__name__)
 Session(app)
 
-
+# Read data from configuration file
 conf = configparser.ConfigParser()
 source_path = Path(Path(os.getcwd()))
 conf.read(os.path.join(str(source_path), 'tox.ini'))
@@ -135,5 +135,5 @@ def check():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, threaded=True)
+    app.run(host='0.0.0.0', port=80, debug=True, threaded=True)
     # app.run(host='localhost', debug=True)

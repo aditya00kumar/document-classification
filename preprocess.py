@@ -13,9 +13,12 @@ import string
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.stem.snowball import SnowballStemmer
+from sklearn.base import BaseEstimator, TransformerMixin
 nltk.data.path.append('./nltk_data/')
 
 
+# todo: Modify class to include BaseEstimator and TransformerMixin to create a sophisticated pipeline.
+# https://github.com/pratos/flask_api/blob/master/notebooks/AnalyticsVidhya%20Article%20-%20ML%20Model%20approach.ipynb
 class PreProcess:
     """
     This class contains all text pre-processing function
