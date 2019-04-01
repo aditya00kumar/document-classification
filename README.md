@@ -14,8 +14,7 @@ This project is an attempt to provide a generic pipeline for document classifica
 Following functionalities are provided as an flask app and hosted on heroku https://nlp-pipe.herokuapp.com/.
 
 Initially it takes time to start the heroku instance, once up it can be used.
-
-
+![Screenshot](static/Screenshots/NLP.png)
 1. Upload User input in csv file having two columns namely document and category
 2. Feature Engineering
 	- Removing english stop words i.e. sklearn stopwords
