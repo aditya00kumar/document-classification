@@ -10,14 +10,15 @@ This project is an attempt to provide a generic pipeline for document classifica
  - Visualize the results and get pickle file for trained model.
  - Use pickle file of model to do prediction.
 
-## Steps Involved
-- Create flask module for including all the modules of project
+## Features
+Following functionalities are provided as an flask app and hosted on heroku https://nlp-pipe.herokuapp.com/.
 
-1. User input in csv file having two columns namely document and category
-    - [BBC Dataset](http://mlg.ucd.ie/datasets/bbc.html)
-        - There are five different categories of documents namely business, entertainment, politics, sport and tech.
+Initially it takes time to start the heroku instance, once up it can be used.
+
+
+1. Upload User input in csv file having two columns namely document and category
 2. Feature Engineering
-	- Removing stop words
+	- Removing english stop words i.e. sklearn stopwords
 	- Stemming and lemmatization
 	- TF-IDF
 	- Word2Vec
@@ -30,7 +31,7 @@ This project is an attempt to provide a generic pipeline for document classifica
     - Decision Tree
     - Random Forest
     - Neural Net
-4. Results of each model.
+4. Result of each model.
 5. Deployment of each model as an API.
 
 ## Running on AWS
@@ -40,19 +41,19 @@ This project is an attempt to provide a generic pipeline for document classifica
 4. Run the flask app using `sudo python3 -m flask run --host=0.0.0.0 --port=80`.
 5. App can be opened on public ip provided in aws console.
 
-## Using gunicorn and nginx
-6. `pip install gunicorn`
-7. `sudo apt-get install nginx`
-8. To start nginx server `sudo /etc/init.d/nginx start`
-9. `sudo apt-get install gunicorn3`
-10. `gunicorn app:app -b localhost:8000 &`
+## Using gunicorn and nginx (needs to be configured properly for AWS machine)
+1. `pip install gunicorn`
+2. `sudo apt-get install nginx`
+3. To start nginx server `sudo /etc/init.d/nginx start`
+4. `sudo apt-get install gunicorn3`
+5. `gunicorn app:app -b localhost:8000 &`
 
 
 ##  Task List
-  - [X] Save the pickle files.
   - Make an api for pickle files to be consumed.
 
 ### Contact:
+You are welcome to contribute to the project, please send a pull request with proper feature description.
 For any suggestion/clarification please contact at aditya00kumar@gmail.com
 
 ### References:
