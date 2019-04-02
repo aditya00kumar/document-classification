@@ -1,106 +1,123 @@
- body {
-     background-color: silver 
+body {
+    background-color: silver
 }
- h1, h2, h3, p, a, footer {
-     font-family: Verdana, Geneva, sans-serif;
-     text-align: center 
+
+h1, h2, h3, p, a, footer {
+    font-family: Verdana, Geneva, sans-serif;
+    text-align: center
 }
- h1 {
-     font-size: 56px;
-     line-height: 1.35;
-     letter-spacing: -.02em;
-     margin: 24px 0;
-     color: rgb(255,1,1);
+
+h1 {
+    font-size: 56px;
+    line-height: 1.35;
+    letter-spacing: -.02em;
+    margin: 24px 0;
+    color: rgb(255, 1, 1);
 }
- h2 {
-     color: rgb(255,1,1);
+
+h2 {
+    color: rgb(255, 1, 1);
 }
- iframe {
-     margin-left: auto;
-     margin-right: auto;
-     display: block;
-     border: 0;
-     vertical-align: middle;
-     position: relative;
-     -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-     box-sizing: border-box;
+
+iframe {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border: 0;
+    vertical-align: middle;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
- a {
-     color: rgb(255,82,82);
-     font-weight: 500;
+
+a {
+    color: rgb(255, 82, 82);
+    font-weight: 500;
 }
- a:link {
-     text-decoration: none;
+
+a:link {
+    text-decoration: none;
 }
- button {
-     display: inline-block;
-     position: relative;
-     line-height: 32px;
-     border-radius: 2px;
-     background-color: #fff;
+
+button {
+    display: inline-block;
+    position: relative;
+    line-height: 32px;
+    border-radius: 2px;
+    background-color: #fff;
 }
- button.raised {
-     transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-     transition-delay: 0.2s;
-     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+button.raised {
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.2s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
- button.raised:active {
-     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-     transition-delay: 0s;
+
+button.raised:active {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    transition-delay: 0s;
 }
- md-button {
-     margin: 6px 8px 6px 8px;
-     padding: 6px 6px 6px 6px;
-     font-size: 14px;
-     text-align: center;
-     /*text-transform: uppercase;*/
-     text-decoration: none;
-     border: none;
-     outline: none;
-     background-color: #fff;
-     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.26);
+
+md-button {
+    margin: 6px 8px 6px 8px;
+    padding: 6px 6px 6px 6px;
+    font-size: 14px;
+    text-align: center;
+    /*text-transform: uppercase;*/
+    text-decoration: none;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.26);
 }
- input {
-     font-size:14px;
-     padding:10px 10px 10px 5px;
+
+input {
+    font-size: 14px;
+    padding: 10px 10px 10px 5px;
     /*display:block;
     */
-     width:300px;
-     border:none;
-     border-bottom:1px solid #757575;
-}
- form {
-     text-align: center;
-}
- table, th, td {
-     border: 0.5px solid grey;
-     border-collapse: collapse;
-     padding: 12px;
-     text-align: center;
-     position: relative;
-}
- table {
-     width: 100%;
-}
- table td:nth-child(odd) {
-     background-color: #f2f2f2;
-}
- table td:nth-child(even) {
-     background-color: #f1f1f1;
-}
- table td:hover {
-     background-color: #ddd;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
 }
 
-#heading h1{
-   color:rgb(255,1,1);
+form {
+    text-align: center;
 }
 
-#heading2 h2{
-   color:rgb(255,1,1);
+table, th, td {
+    border: 0.5px solid grey;
+    border-collapse: collapse;
+    padding: 12px;
+    text-align: center;
+    position: relative;
 }
 
-textarea{
-  overflow: auto;
+table {
+    width: 100%;
+}
+
+table td:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+table td:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+table td:hover {
+    background-color: #ddd;
+}
+
+#heading h1 {
+    color: rgb(255, 1, 1);
+}
+
+#heading2 h2 {
+    color: rgb(255, 1, 1);
+}
+
+textarea {
+    overflow: auto;
 }

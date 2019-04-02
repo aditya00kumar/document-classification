@@ -6,12 +6,12 @@ Project: document-classification
 Date Created: 18-03-2019 01:46
 """
 
-from sklearn.neural_network import MLPClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
-from sklearn.naive_bayes import GaussianNB
 
 names = ["Nearest Neighbors", "Linear SVM", "RBF SVM", "Decision Tree",
          "Random Forest", "Neural Net", "Naive Bayes"]

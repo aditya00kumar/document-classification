@@ -12,7 +12,7 @@ class Config(object):
     # host = 'localhost'
     # host = '10.216.7.223'
     # UPLOAD_FOLDER = '/Users/aditya1/Documents/Document_Classification/Uploads'
-    MAX_CONTENT_LENGTH = 16*1024*1024
+    MAX_CONTENT_LENGTH = 16 * 1024 * 1024
     # DEVELOPMENT = True
     # SECRET_KEY = 'do-i-really-need-this'
     # FLASK_HTPASSWD_PATH = ''

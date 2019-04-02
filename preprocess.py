@@ -6,14 +6,14 @@ Project: document_classification
 Last Modified: 1/8/18 3:10 PM
 """
 
-import nltk
-import re
 import html
 import string
+
+import nltk
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.stem.snowball import SnowballStemmer
-from sklearn.base import BaseEstimator, TransformerMixin
+
 nltk.data.path.append('./nltk_data/')
 
 
@@ -25,6 +25,7 @@ class PreProcess:
     # Input parameters: Dataframe, Column_name on which function needs to be applied
     # Output parameters: Return dataframe after applying operations
     """
+
     # todo: Pass functions as a list of arguments to apply in the class
     # todo: make set of words before applying all operations to reduce processing time.
     def __init__(self, data, column_name):
@@ -63,16 +64,18 @@ class PreProcess:
         # self.data[self.column_name] = self.data[self.column_name].apply(lambda x: " ".join([snowball_stemmer.stem(item)
         #                                                                 for item in x.split()]))
         self.data[self.column_name] = self.data[self.column_name].apply(lambda x: " ".join([self.stemmer.stem(item)
-                                                                        for item in x.split()]))
+                                                                                            for item in x.split()]))
         return self.data
 
     def lemmatization(self):
-        self.data[self.column_name] = self.data[self.column_name].apply(lambda x: " ".join([self.lemmatiser.lemmatize(item)
-                                                                        for item in x.split()]))
+        self.data[self.column_name] = self.data[self.column_name].apply(
+            lambda x: " ".join([self.lemmatiser.lemmatize(item)
+                                for item in x.split()]))
         return self.data
 
     def stop_words(self):
         stop = stopwords.words('english')
-        self.data[self.column_name] = self.data[self.column_name].apply(lambda x: " ".join(set([item for item in x.split() if
-                                                                                       item not in stop])))
+        self.data[self.column_name] = self.data[self.column_name].apply(
+            lambda x: " ".join(set([item for item in x.split() if
+                                    item not in stop])))
         return self.data

@@ -6,18 +6,21 @@ Project: document_classification
 Last Modified: 1/8/18 3:10 PM
 """
 
-import os
-import pandas as pd
-from flask import Flask, render_template, request, jsonify
-from sklearn.externals import joblib
-from flask_session import Session
-from preprocess import PreProcess
 import configparser
+import os
 from pathlib import Path
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
-from ml_models import train_model
+
 import nltk
+import pandas as pd
+from flask import Flask, render_template, request
+from flask_session import Session
+from sklearn.externals import joblib
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+
+from ml_models import train_model
+from preprocess import PreProcess
+
 nltk.data.path.append('./nltk_data/')
 
 app = Flask(__name__)
@@ -74,8 +77,8 @@ def train():
     files_path = os.path.join(app.config['UPLOAD_FOLDER'], session_id)
     # todo: check for csv files only
     csv_file = os.listdir(files_path)[0]
-    print(files_path+'/'+csv_file)
-    train_vectors, train_y = read_process_data(files_path+'/'+csv_file)
+    print(files_path + '/' + csv_file)
+    train_vectors, train_y = read_process_data(files_path + '/' + csv_file)
     path_to_source = Path(os.getcwd())
     model_path = os.path.join(str(Path(path_to_source)), 'Uploads')
 
@@ -84,7 +87,7 @@ def train():
     for clf in clfs:
         model = train_model(train_vectors, train_y, clf)
         if model:
-            joblib.dump(model, Path(Path(model_path), session_id, clf.replace(" ", "_")+'.pkl'))
+            joblib.dump(model, Path(Path(model_path), session_id, clf.replace(" ", "_") + '.pkl'))
             print('done saving pkl')
         else:
             print('None object returned')

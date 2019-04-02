@@ -7,19 +7,17 @@ Project: Document_Classification
 Last Modified: 12/21/17 11:15 AM
 """
 import os
-import pandas as pd
+
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-from preprocess import PreProcess
-from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
 from sklearn import metrics
-from sklearn.multiclass import OneVsRestClassifier
-from sklearn.linear_model import SGDClassifier
-from sklearn.pipeline import FeatureUnion
 from sklearn import svm
-from sklearn.naive_bayes import MultinomialNB
 from sklearn.externals import joblib
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import MultinomialNB
+
+from preprocess import PreProcess
 
 
 def get_data(path, generate_graph=False, display_graph=False):
@@ -96,7 +94,8 @@ def main():
     y_pred_class = model2.predict(test_vectors)
     print("Accuracy score:", metrics.accuracy_score(test_y, y_pred_class))
     print("Confusion Matrix for classifier %s:\n%s\n" % (model2, metrics.confusion_matrix(test_y, y_pred_class)))
-    print("Classification report for classifier %s:\n%s\n" % (model2, metrics.classification_report(test_y, y_pred_class)))
+    print("Classification report for classifier %s:\n%s\n" % (
+        model2, metrics.classification_report(test_y, y_pred_class)))
 
     # pipeline = FeatureUnion([('clean', pre_processor.clean_html()), ('spaces', pre_processor.remove_spaces())])
 
@@ -107,4 +106,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
