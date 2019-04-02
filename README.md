@@ -4,17 +4,18 @@
 [![HitCount](http://hits.dwyl.io/aditya00kumar/document-classification.svg)](http://hits.dwyl.io/aditya00kumar/document-classification)
 
 This project is an attempt to provide a generic pipeline for document classification using different machine learning
- models. Features of this project are following:
+ models which can be hosted on any cloud service without any difficulty. Features of this project are following:
  - Online training of models using custom training data provided by user.
  - Define the split ratio for training and validation of result. By default 80-20 split has been provided.
  - Visualize the results and get pickle file for trained model.
  - Use pickle file of model to do prediction.
 
 ## Features
-Following functionalities are provided as an flask app and hosted on heroku https://nlp-pipe.herokuapp.com/.
-
-Initially it takes time to start the heroku instance, once up it can be used.
-![Screenshot](static/Screenshots/NLP.png)
+- Below mentioned following functionalities are provided as an flask app and can be hosted on any cloud platform.
+- This repo is directly connected to heroku platform and hence any new push to repo will result the changes to be 
+reflected in Heroku app in real time hosted at https://nlp-pipe.herokuapp.com/.
+- Initially it takes time to start the heroku instance, once up it can be used and UI will be displayed like where
+![Screenshot](static/Screenshots/NLP.png "Main Page")
 1. Upload User input in csv file having two columns namely document and category
 2. Feature Engineering
 	- Removing english stop words i.e. sklearn stopwords
@@ -59,4 +60,4 @@ For any suggestion/clarification please contact at aditya00kumar@gmail.com
  - https://pyliaorachel.github.io/blog/tech/system/2017/07/07/flask-app-with-gunicorn-on-nginx-server-upon-aws-ec2-linux.html
  - http://nginx.org/en/docs/beginners_guide.html#conf_structure
  - https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-14-04
- 
+
