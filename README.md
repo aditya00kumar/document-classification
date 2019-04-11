@@ -18,10 +18,10 @@ reflected in Heroku app in real time hosted at https://nlp-pipe.herokuapp.com/.
 ![Screenshot](static/Screenshots/NLP.png "Main Page")
 1. Upload User input in csv file having two columns namely document and category
 2. Feature Engineering
-	- Removing english stop words i.e. sklearn stopwords
-	- Stemming and lemmatization
-	- TF-IDF
-	- Word2Vec
+	- [X] Removing english stop words i.e. sklearn stopwords
+	- [X] Stemming and lemmatization
+	- [X] TF-IDF
+	- [] Word2Vec
 3. Model Building using default params
 	- Naive-Bayes
 	- SVM
@@ -31,7 +31,9 @@ reflected in Heroku app in real time hosted at https://nlp-pipe.herokuapp.com/.
     - Decision Tree
     - Random Forest
     - Neural Net
-4. Result of each model.
+    ** Training all models (even single model sometimes) takes more than 30 seconds for large dataset. Free version
+     of Heroku instance doesn't support that. If you really want to test the app you can host it on AWS or mail me.
+4. Test the result of models by providing text input.
 5. Deployment of each model as an API.
 
 ## Running on AWS
@@ -51,6 +53,8 @@ reflected in Heroku app in real time hosted at https://nlp-pipe.herokuapp.com/.
 
 ##  Task List
   - Make an api for pickle files to be consumed.
+  - Deployment of each model as an API and provide an end point for user.
+  - Make trained model files downloadable to user.
 
 ### Contact:
 You are welcome to contribute to the project, please send a pull request with proper feature description.

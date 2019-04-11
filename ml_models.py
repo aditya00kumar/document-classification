@@ -34,10 +34,8 @@ def train_model(train_vectors, train_target, model_name):
     :param model_name: name of model defined in tox.ini to be trained on data
     :return: trained model
     """
-    print('model_name: ', model_name)
-    model = None
+    # print('model_name: ', model_name)
     for name, model in zip(names, classifiers):
-        # print(name, model)
         if name in model_name:
             model.fit(train_vectors, train_target)
-    return model
+            return model
