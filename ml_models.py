@@ -7,7 +7,7 @@ Date Created: 18-03-2019 01:46
 """
 
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import MultinomialNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
@@ -23,7 +23,7 @@ classifiers = [
     DecisionTreeClassifier(max_depth=5),
     RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
     MLPClassifier(alpha=1),
-    GaussianNB()]
+    MultinomialNB()]
 
 
 def train_model(train_vectors, train_target, model_name):
