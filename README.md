@@ -5,8 +5,7 @@
 
 This project is an attempt to provide a generic pipeline for document classification using different machine learning
  models which can be hosted on any cloud service without any difficulty. This repo is connected to heroku cloud 
- and it has been hosted as an flask app https://nlp-pipe.herokuapp.com/. Effect of any commit to this repo will 
- reflected at provided link.
+ and it has been hosted as an flask app https://nlp-pipe.herokuapp.com/.
  
  Features of this project are following:
  - Online training of models using custom training data provided by user.
