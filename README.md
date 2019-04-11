@@ -31,7 +31,8 @@ reflected in Heroku app in real time hosted at https://nlp-pipe.herokuapp.com/.
     - Decision Tree
     - Random Forest
     - Neural Net
-    ** Training all models (even single model sometimes) takes more than 30 seconds for large dataset. Free version
+    
+     Training of all models (even single model sometimes) takes more than 30 seconds for large dataset. Free version
      of Heroku instance doesn't support that. If you really want to test the app you can host it on AWS or mail me.
 4. Test the result of models by providing text input.
 5. Deployment of each model as an API.
