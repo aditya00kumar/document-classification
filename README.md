@@ -64,7 +64,7 @@ reflected in Heroku app in real time hosted at https://nlp-pipe.herokuapp.com/.
 
 ### Contact:
 You are welcome to contribute to the project, please send a pull request with proper feature description.
-For any suggestion/clarification please contact at aditya00kumar@gmail.com
+For any suggestion/clarification please raise an issue in git.
 
 ### References:
  - https://pyliaorachel.github.io/blog/tech/system/2017/07/07/flask-app-with-gunicorn-on-nginx-server-upon-aws-ec2-linux.html
