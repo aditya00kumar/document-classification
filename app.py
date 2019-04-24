@@ -147,31 +147,31 @@ def check():
 def submit():
     if request.form['text_input'] == "" or len(request.form['text_input']) < 10:
         return "Please provide input large enough, Classifier can understand :)"
-    else:
-        # todo: change column name to be dynamically taken from training file
-        test_data = pd.DataFrame([request.form['text_input']], columns=['Document'])
-        session_id = request.cookies['session']
-        path = os.path.join(app.config['UPLOAD_FOLDER'], session_id)
-        trained_classifier = [i for i in os.listdir(path) if '.pkl' in i]
-        vectorizer = os.path.join(path, 'tfidf_vectorizer.pk')
-        tfidf_transformer = joblib.load(vectorizer)
-        pre_processor = PreProcess(test_data, column_name='Document')
-        test_data = pre_processor.clean_html()
-        test_data = pre_processor.remove_non_ascii()
-        test_data = pre_processor.remove_spaces()
-        test_data = pre_processor.remove_punctuation()
-        test_data = pre_processor.stemming()
-        test_data = pre_processor.lemmatization()
-        test_data = pre_processor.stop_words()
-        test_data1 = tfidf_transformer.transform(test_data.Document)
-        result = {}
-        for clf in trained_classifier:
-            model = joblib.load(os.path.join(path, clf))
-            print(clf, model.predict(test_data1)[0])
-            classifier_name = clf.split('/')[-1].split('.')[0]
-            result[classifier_name] = model.predict(test_data1)[0]
-            print(result)
-        return render_template('results.html', result=result)
+
+    # todo: change column name to be dynamically taken from training file
+    test_data = pd.DataFrame([request.form['text_input']], columns=['Document'])
+    session_id = request.cookies['session']
+    path = os.path.join(app.config['UPLOAD_FOLDER'], session_id)
+    trained_classifier = [i for i in os.listdir(path) if '.pkl' in i]
+    vectorizer = os.path.join(path, 'tfidf_vectorizer.pk')
+    tfidf_transformer = joblib.load(vectorizer)
+    pre_processor = PreProcess(test_data, column_name='Document')
+    test_data = pre_processor.clean_html()
+    test_data = pre_processor.remove_non_ascii()
+    test_data = pre_processor.remove_spaces()
+    test_data = pre_processor.remove_punctuation()
+    test_data = pre_processor.stemming()
+    test_data = pre_processor.lemmatization()
+    test_data = pre_processor.stop_words()
+    test_data1 = tfidf_transformer.transform(test_data.Document)
+    result = {}
+    for clf in trained_classifier:
+        model = joblib.load(os.path.join(path, clf))
+        print(clf, model.predict(test_data1)[0])
+        classifier_name = clf.split('/')[-1].split('.')[0]
+        result[classifier_name] = model.predict(test_data1)[0]
+        print(result)
+    return render_template('results.html', result=result)
 
 
 if __name__ == '__main__':
