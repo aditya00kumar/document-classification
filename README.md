@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 [![HitCount](http://hits.dwyl.io/aditya00kumar/document-classification.svg)](http://hits.dwyl.io/aditya00kumar/document-classification)
-
+[![CodeFactor](https://www.codefactor.io/repository/github/aditya00kumar/document-classification/badge)](https://www.codefactor.io/repository/github/aditya00kumar/document-classification)
 
 This project is an attempt to provide a generic pipeline for document classification using different machine learning
  models which can be hosted on any cloud service without any difficulty. This repo is connected to heroku cloud 
