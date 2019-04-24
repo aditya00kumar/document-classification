@@ -7,6 +7,7 @@ Project: document_classification
 Last Modified: 1/8/18 3:10 PM
 """
 
+import ast
 import configparser
 import os
 from pathlib import Path
@@ -49,7 +50,7 @@ def display_index():
     session_id = request.cookies['session']
     files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
     print('user:', user_id)
-    return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
+    return render_template('index.html', files=files, classifiers=ast.literal_eval(config['classifiers']))
 
 
 def read_process_data(path, files_path):
@@ -97,7 +98,7 @@ def train():
         else:
             print('None object returned')
     files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
-    return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
+    return render_template('index.html', files=files, classifiers=ast.literal_eval(config['classifiers']))
 
 
 @app.route('/test', methods=['POST'])
@@ -113,7 +114,7 @@ def upload_file():
         print(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], session_id, file.filename))
     files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
-    return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
+    return render_template('index.html', files=files, classifiers=ast.literal_eval(config['classifiers']))
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -127,12 +128,12 @@ def dropdown():
         print("Directory already exists")
     files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER'], session_id))
     print('files are', files)
-    return render_template('index.html', files=files, classifiers=eval(config['classifiers']))
+    return render_template('index.html', files=files, classifiers=ast.literal_eval(config['classifiers']))
 
 
 @app.route('/display_classifier', methods=['GET', 'POST'])
 def display_classifier():
-    return render_template('index.html', classifiers=eval(config['classifiers']))
+    return render_template('index.html', classifiers=ast.literal_eval(config['classifiers']))
 
 
 @app.route('/check', methods=['GET', 'POST'])
@@ -174,5 +175,5 @@ def submit():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True, threaded=True)
+    app.run(host='0.0.0.0', port=80, debug=False, threaded=True)
     # app.run(host='localhost', debug=True)
