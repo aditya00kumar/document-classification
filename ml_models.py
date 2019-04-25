@@ -21,7 +21,7 @@ classifiers = [
     SVC(kernel="linear", C=0.025),
     SVC(gamma=2, C=1),
     DecisionTreeClassifier(max_depth=5),
-    RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
+    RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1, n_jobs=-1),
     MLPClassifier(alpha=1),
     MultinomialNB()]
 
